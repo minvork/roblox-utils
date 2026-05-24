@@ -1,0 +1,38 @@
+{
+	"name": "@jabko/utils",
+	"version": "1.0.0",
+	"description": "",
+	"bugs": {
+		"url": "https://github.com/minvork/roblox-utils/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/minvork/roblox-utils.git"
+	},
+	"license": "MIT",
+	"author": "minvork",
+	"type": "module",
+	"main": "index.ts",
+	"scripts": {
+		"build": "rbxtsc",
+		"watch": "rbxtsc -w"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.15",
+		"@rbxts/compiler-types": "^3.0.0-types.0",
+		"@rbxts/types": "^1.0.923",
+		"knip": "^6.14.2",
+		"roblox-ts": "^3.0.0",
+		"typescript": "5.9.3"
+	},
+	"dependencies": {
+		"@rbxts/jsnatives": "^1.1.5",
+		"@rbxts/services": "^1.6.0",
+		"@rbxts/string-utils": "^1.0.3"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,json,jsonc}": [
+			"biome check --write --no-errors-on-unmatched"
+		]
+	}
+}
