@@ -1,4 +1,4 @@
-Some useful tools..ю
+Some useful tools..
 
 ui: (
 	type UiElement,
