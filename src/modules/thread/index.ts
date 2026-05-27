@@ -150,6 +150,7 @@ class ThreadController {
 
 		if (this.readyActors.has(actor)) {
 			const nextTask = queue.shift();
+
 			if (nextTask) {
 				nextTask();
 			}
