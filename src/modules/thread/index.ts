@@ -1,7 +1,7 @@
 //!strict
 
 import { RunService, Players, ServerScriptService } from "@rbxts/services";
-import { initFolder } from "../../res/definitions";
+import { threadFolder } from "../../res/definitions";
 import type { StarterJobArgs } from "../../system/tickManager";
 
 class ThreadController {
@@ -36,8 +36,8 @@ class ThreadController {
 			? (Players.LocalPlayer.FindFirstChild("PlayerScripts") as PlayerScripts)
 			: ServerScriptService;
 
-		this.threadFinishedSignal = initFolder.Parent?.FindFirstChild("thread")?.FindFirstChild("threadFinished") as BindableEvent;
-		this.workerReadySignal = initFolder.Parent?.FindFirstChild("thread")?.FindFirstChild("workerReady") as BindableEvent;
+		this.threadFinishedSignal = threadFolder?.FindFirstChild("threadFinished") as BindableEvent;
+		this.workerReadySignal = threadFolder?.FindFirstChild("workerReady") as BindableEvent;
 
 		this.workerReadyConnection = this.workerReadySignal.Event.Connect((actor: Actor) => {
 			this.readyActors.add(actor);

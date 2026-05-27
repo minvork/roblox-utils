@@ -2,18 +2,27 @@ import { Players, ReplicatedStorage } from "@rbxts/services";
 import type { StarterTaskArgs, Tasks } from "../system/tickManager";
 import type { GenericAlert, GenericEventCaller } from "../utils";
 
-const initFolder = ReplicatedStorage.FindFirstChild("core")?.FindFirstChild("node_modules")?.FindFirstChild("@jabko")?.FindFirstChild("utils")?.FindFirstChild("src")?.FindFirstChild("res")?.FindFirstChild("events")?.FindFirstChild("init") as Folder;
+const resFolder = ReplicatedStorage.FindFirstChild("core")?.FindFirstChild("node_modules")?.FindFirstChild("@jabko")?.FindFirstChild("utils")?.FindFirstChild("src")?.FindFirstChild("res") as Folder;
 
-const initScriptsFolder = ReplicatedStorage.FindFirstChild("core")?.FindFirstChild("node_modules")?.FindFirstChild("@jabko")?.FindFirstChild("utils")?.FindFirstChild("src")?.FindFirstChild("res")?.FindFirstChild("tasks")?.FindFirstChild("init") as Folder;
+const eventsFolder = new Instance("Folder", resFolder);
+eventsFolder.Name = "events";
+
+const initFolder = new Instance("Folder", eventsFolder);
+eventsFolder.Name = "init";
+
+const threadFolder = new Instance("Folder", eventsFolder);
+eventsFolder.Name = "thread";
+
+const initScriptsFolder = resFolder.FindFirstChild("tasks")?.FindFirstChild("init") as Folder;
 
 if (!initFolder.FindFirstChild("cameraPromise")) {
 	new Instance("BindableEvent", initFolder).Name = "cameraPromise";
 
 	new Instance("BindableEvent", initFolder).Name = "viewportSizePromise";
 
-	new Instance("BindableEvent", initFolder.Parent?.FindFirstChild("thread") as Folder).Name = "threadFinished";
+	new Instance("BindableEvent", threadFolder).Name = "threadFinished";
 
-	new Instance("BindableEvent", initFolder.Parent?.FindFirstChild("thread") as Folder).Name = "workerReady";
+	new Instance("BindableEvent", threadFolder).Name = "workerReady";
 }
 
 export const client: Player = Players.LocalPlayer;
@@ -40,4 +49,4 @@ export interface ViewportSizePromiseTaskArgs extends StarterTaskArgs {
 	readonly onViewportInitCaller: GenericEventCaller<[]>;
 }
 
-export { initFolder };
+export { threadFolder };
