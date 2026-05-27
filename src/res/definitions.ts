@@ -8,10 +8,10 @@ const eventsFolder = new Instance("Folder", resFolder);
 eventsFolder.Name = "events";
 
 const initFolder = new Instance("Folder", eventsFolder);
-eventsFolder.Name = "init";
+initFolder.Name = "init";
 
 const threadFolder = new Instance("Folder", eventsFolder);
-eventsFolder.Name = "thread";
+threadFolder.Name = "thread";
 
 const initScriptsFolder = resFolder.FindFirstChild("tasks")?.FindFirstChild("init") as Folder;
 
